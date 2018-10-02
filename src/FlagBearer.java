@@ -11,20 +11,17 @@ public class FlagBearer {
 
 	public static void main(String[] args) {
 		try {
-			System.out.println((char) 27 + "[31m"); // Makes text red (Only works in console)
-
 			// Load Flag
 			Flag swissFlag = new Flag("src/swiss_flag.txt", 1, 4, 0.1);
 			while (true) {
-				try {
-					TimeUnit.MILLISECONDS.sleep(20);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-				System.out.println(swissFlag);
+				TimeUnit.MILLISECONDS.sleep(20);
+				System.err.println(swissFlag);
 			}
 		} catch (IOException e) {
+			System.err.println("Error while reading the file:");
 			e.printStackTrace();
+		} catch (InterruptedException e) {
+			System.out.println("Good Bye :)");
 		}
 	}
 
