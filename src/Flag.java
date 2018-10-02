@@ -117,7 +117,7 @@ public class Flag {
 	 */
 	public String toString() {
 		StringBuffer out = new StringBuffer();
-		for (int i = -amplitude / 2; i < height + amplitude / 2; i++) {
+		for (int i = -amplitude; i < height + amplitude; i++) {
 			out.append(getLine(i));
 			out.append("\n");
 		}
@@ -142,7 +142,7 @@ public class Flag {
 	String getLine(int line) {
 		StringBuffer out = new StringBuffer();
 		for (int i = 0; i < width; i++) {
-			int offset = (int) Math.round(Math.sin(this.speed * this.time + i * frequency / width * Math.PI * 2));
+			int offset = (int) Math.round(this.amplitude*0.5*Math.sin(this.speed * this.time + i * frequency / width * Math.PI * 2));
 			out.append(getChar(i, line + offset));
 		}
 		return out.toString();
