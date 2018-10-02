@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 /**
  * Loads a flag from a textfile and adds waves to it
+ * 
  * @author Yannick Andreas Müller
  *
  */
@@ -46,6 +47,31 @@ public class Flag {
 		this.time = 0;
 	}
 
+	// Getter & Setter Functions
+	public void setAmplitude(int amplitude) {
+		this.amplitude = amplitude;
+	}
+
+	public void setFrequency(double frequency) {
+		this.frequency = frequency;
+	}
+
+	public void setSpeed(double speed) {
+		this.speed = speed;
+	}
+
+	public int getAmplitude(int amplitude) {
+		return this.amplitude;
+	}
+
+	public double getFrequency(double frequency) {
+		return this.frequency;
+	}
+
+	public double getSpeed(double speed) {
+		return this.speed;
+	}
+
 	/**
 	 * Reads Flag from textfile
 	 * 
@@ -70,7 +96,7 @@ public class Flag {
 		}
 		flag.add(firstLine);
 
-		//Read in following Lines and check if it stays rectangular
+		// Read in following Lines and check if it stays rectangular
 		String line;
 		while ((line = reader.readLine()) != null) {
 			if (line.length() == width) {
@@ -91,7 +117,7 @@ public class Flag {
 	 */
 	public String toString() {
 		StringBuffer out = new StringBuffer();
-		for (int i = -amplitude; i < height + amplitude; i++) {
+		for (int i = -amplitude / 2; i < height + amplitude / 2; i++) {
 			out.append(getLine(i));
 			out.append("\n");
 		}
@@ -105,7 +131,7 @@ public class Flag {
 	void tick() {
 		this.time++;
 	}
-	
+
 	/**
 	 * Returns a single Line of the flag
 	 * 
